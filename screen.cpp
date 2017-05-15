@@ -7,15 +7,7 @@ using namespace std;
 Screen::Screen(int nl, int nc){
     nlin = nl;
     ncol = nc;
-    mat = new int[nlin];
-    mat[0] = new int[nlin*ncol];
-    for(int i =0; i<nlin*ncol;i++){
-        mat[0][i] = ' ';
-    }
-}
-Screen::~Screen(){
-    delete mat[0];
-    delete mat;
+    mat = vector<vector<char>>(nlin, vector<char>(ncol, '-'));
 }
 
 void Screen::setPixel(int x, int y){
@@ -32,7 +24,17 @@ void Screen::setBrush(char brush)
     this->brush = brush;
 }
 
-ostream &Screen::operator<<(ostream &os, Screen &t)
+void Screen::print()
+{
+    for(int i=0; i<nlin; i++){
+        for(int j=0; j<ncol; j++){
+            cout << mat[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
+/*ostream &Screen::operator<<(ostream &os, Screen &t)
 {
     for(int i =0; i<nlin;i++){
         for(int j =0; j<ncol; j++){
@@ -41,4 +43,4 @@ ostream &Screen::operator<<(ostream &os, Screen &t)
         }
         os.operator <<(endl);
     }
-}
+}*/

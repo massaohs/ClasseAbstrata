@@ -1,5 +1,9 @@
 #ifndef SCREEN_H
 #define SCREEN_H
+#include <vector>
+
+using namespace std;
+
 class Screen{
 private:
   // armazenam o tamanho da tela de desenho
@@ -15,8 +19,6 @@ public:
   // construtor da classe
   Screen(int nlin, int ncol);
 
-  ~Screen();
-
   // desenha um pixel da matriz usando o caratere
   // guardado em 'brush'
   void setPixel(int x, int y);
@@ -27,8 +29,10 @@ public:
   // muda o caractere de desenho
   void setBrush(char brush);
 
+  void print();
+
   // envia a tela para um stream de saida
-  friend ostream& operator<<(ostream &os, Screen &t);
+ // friend std::ostream& operator<<(ostream &os, Screen &t);
 };
 #endif // SCREEN_H
 
