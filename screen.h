@@ -4,35 +4,52 @@
 #include <fstream>
 
 using namespace std;
-
+/**
+ * @brief A classe Screen
+ */
 class Screen{
 private:
-  // armazenam o tamanho da tela de desenho
-  // no de linhas e de colunas
+    /**
+   * @brief nlin armazena o número de linhas que a sceen terá
+   */
   int nlin, ncol;
 
-  // guarda o caractere usado para desenhar
+  /**
+   * @brief ncol armazena o número de colunas que a screen terá
+   */
   char brush;
 
-  // armazena a matriz da tela
+  /**
+   * @brief mat armazena a matriz da tela
+   */
   vector< vector<char> > mat;
 public:
-  // construtor da classe
+  /**
+   * @brief Screen - Construtor da classe
+   * @param nlin número de linhas
+   * @param ncol número de colunas
+   */
   Screen(int nlin, int ncol);
 
-  // desenha um pixel da matriz usando o caratere
-  // guardado em 'brush'
+  /**
+   * @brief setPixel desenha um pixel na matriz usando o caractere guardado em brush
+   * @param x para "setar" um pixel na matriz
+   * @param y para "setar" um pixel na matriz
+   */
   void setPixel(int x, int y);
 
-  // limpa a tela
+  ///limpa a tela
   void clear();
 
-  // muda o caractere de desenho
+  /**
+   * @brief setBrush muda o caractere de desenho
+   * @param brush armazena o caractere
+   */
   void setBrush(char brush);
-
+  ///Imprime um pixel
   void print();
 
-  // envia a tela para um stream de saida
+  /// envia a tela para um stream de saida
   friend ostream& operator<<(ostream &os, Screen &t);
 };
 #endif // SCREEN_H
