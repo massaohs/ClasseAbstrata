@@ -11,14 +11,14 @@ Retangulo::Retangulo(int mx, int my, int larg, int alt)
 
 void Retangulo::draw(Screen &t)
 {
-    for(int j=y0; j<y0+largura; j++){
-        t.setPixel(x0,j);
-        t.setPixel(x0+altura-1, j);
+    for(int j=y0; j<y0+altura; j++){
+        t.setPixel(x0, j);
+        t.setPixel(x0+largura-1, j);
     }
 
-    for(int i=x0; i<x0+altura; i++){
+    for(int i=x0; i<x0+largura; i++){
         t.setPixel(i, y0);
-        t.setPixel(i, y0+largura-1);
+        t.setPixel(i, y0+altura-1);
     }
 
 }

@@ -11,7 +11,7 @@ Screen::Screen(int nl, int nc){
 }
 
 void Screen::setPixel(int x, int y){
-    mat[x][y] = brush;
+    mat[y][x] = brush;
 }
 
 void Screen::clear(){

@@ -1,6 +1,6 @@
 #ifndef FIGURAGEOMETRICA_H
 #define FIGURAGEOMETRICA_H
-#include "screen.h";
+#include "screen.h"
 class FiguraGeometrica
 {
 public:
