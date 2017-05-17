@@ -32,8 +32,9 @@ int main()
 
     string funcao;
 
-
     while(entrada >> funcao){
+        cout << funcao << endl;
+
         if(funcao == "dim"){
             int largura, altura;
             entrada >> largura >> altura;
@@ -54,6 +55,7 @@ int main()
             figura->draw(*tela);
             figura->draw(*arqtela);
             cout << *tela;
+            saida << *tela;
             delete(figura);
             tela->clear();
         }
@@ -64,6 +66,7 @@ int main()
             figura->draw(*tela);
             figura->draw(*arqtela);
             cout << *tela;
+            saida << *tela;
             delete(figura);
             tela->clear();
         }
@@ -75,12 +78,14 @@ int main()
             figura->draw(*tela);
             figura->draw(*arqtela);
             cout << *tela;
+            saida << *tela;
             delete(figura);
             tela->clear();
-            saida << *arqtela;
-
         }
     }
+
+    saida << *arqtela;
+    cout << *arqtela;
 
     entrada.close();
     saida.close();

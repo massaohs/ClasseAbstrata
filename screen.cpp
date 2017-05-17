@@ -14,8 +14,9 @@ void Screen::setPixel(int x, int y){
 }
 
 void Screen::clear(){
-    for(int i =0; i<nlin*ncol;i++){
-        mat[0][i] = ' ';
+    for(int i=0; i<nlin; i++){
+        for(int j=0; j<ncol; j++)
+            mat[i][j] = ' ';
     }
 }
 void Screen::setBrush(char brush)
