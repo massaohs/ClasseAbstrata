@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include "screen.h"
 #include <vector>
 using namespace std;
@@ -7,7 +6,7 @@ using namespace std;
 Screen::Screen(int nl, int nc){
     nlin = nl;
     ncol = nc;
-    mat = vector<vector<char>>(nlin, vector<char>(ncol, '-'));
+    mat = vector<vector<char>>(nlin, vector<char>(ncol, ' '));
 }
 
 void Screen::setPixel(int x, int y){
@@ -16,7 +15,7 @@ void Screen::setPixel(int x, int y){
 
 void Screen::clear(){
     for(int i =0; i<nlin*ncol;i++){
-        mat[0][i] = 0;
+        mat[0][i] = '0';
     }
 }
 void Screen::setBrush(char brush)
@@ -34,13 +33,13 @@ void Screen::print()
     }
 }
 
-/*ostream &Screen::operator<<(ostream &os, Screen &t)
+ostream& operator<<(ostream &os, Screen &t)
 {
-    for(int i =0; i<nlin;i++){
-        for(int j =0; j<ncol; j++){
-            os.operator <<(mat[i][j]);
-            os.operator <<(" ");
+    for(int i=0; i<t.nlin;i++){
+        for(int j=0; j<t.ncol; j++){
+            os<<(t.mat[i][j]) << " ";
         }
-        os.operator <<(endl);
+        os<<(endl);
     }
-}*/
+    return os;
+}

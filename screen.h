@@ -1,6 +1,7 @@
 #ifndef SCREEN_H
 #define SCREEN_H
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -32,7 +33,7 @@ public:
   void print();
 
   // envia a tela para um stream de saida
- // friend std::ostream& operator<<(ostream &os, Screen &t);
+  friend ostream& operator<<(ostream &os, Screen &t);
 };
 #endif // SCREEN_H
 
