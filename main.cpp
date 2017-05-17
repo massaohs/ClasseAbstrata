@@ -13,56 +13,74 @@ using namespace std;
 
 int main()
 {
-
     ifstream entrada;
+    ofstream saida;
+
     entrada.open("entrada.txt");
     if(!entrada.is_open()){
         exit(-3);
     }
-
-
-
-    vector <FiguraGeometrica*> figuras;
-
-    string str;
-    int largura, altura;
-    char brush;
-    int lx0,ly0, lx1, ly1;
-    int rx0, ry0, rlarg,  ralt;
-    int cx0, cy0, craio, cfillmode;
-    int i = 0;
-    while(entrada >> str){
-        if(str == "dim"){
-            entrada >> largura >> altura;
-            cout << largura << "  " << altura << endl;
-        }
-        else if(str == "brush"){
-            entrada >> brush;
-        }
-        else if(str == "line"){
-            entrada >> lx0 >> ly0 >> lx1 >> ly1;
-            figuras[i] = Reta(lx0, ly0, lx1, ly1);
-        }
-        else if(str == "rectangle"){
-            entrada >> rx0 >> ry0 >> rlarg >> ralt;
-        }
-        else if(str == "circle"){
-            entrada >> cx0 >> cy0 >> craio >> cfillmode;
-        }
-    }
-
-
-
-
-
-    ofstream saida;
-
     saida.open("saida.txt");
     if(!saida.is_open()){
         exit(-2);
     }
 
 
+    Screen *tela;
+    Screen *arqtela;
+    FiguraGeometrica *figura;
+
+    string funcao;
+
+
+    while(entrada >> funcao){
+        if(funcao == "dim"){
+            int largura, altura;
+            entrada >> largura >> altura;
+            tela = new Screen(altura, largura);
+            arqtela = new Screen(altura, largura);
+
+        }
+        else if(funcao == "brush"){
+            char brush;
+            entrada >> brush;
+            tela->setBrush(brush);
+        }
+        else if(funcao == "line"){
+
+            int lx0,ly0, lx1, ly1;
+            entrada >> lx0 >> ly0 >> lx1 >> ly1;
+            figura = new Reta(lx0, ly0, lx1, ly1);
+            figura->draw(*tela);
+            figura->draw(*arqtela);
+            cout << *tela;
+            delete(figura);
+            tela->clear();
+        }
+        else if(funcao == "rectangle"){
+            int rx0, ry0, rlarg,  ralt;
+            entrada >> rx0 >> ry0 >> rlarg >> ralt;
+            figura = new Retangulo(rx0, ry0, rlarg, ralt);
+            figura->draw(*tela);
+            figura->draw(*arqtela);
+            cout << *tela;
+            delete(figura);
+            tela->clear();
+        }
+        else if(funcao == "circle"){
+
+            int cx0, cy0, craio, cfillmode;
+            entrada >> cx0 >> cy0 >> craio >> cfillmode;
+            figura = new Circulo(cx0, cy0, craio, cfillmode);
+            figura->draw(*tela);
+            figura->draw(*arqtela);
+            cout << *tela;
+            delete(figura);
+            tela->clear();
+            saida << *arqtela;
+
+        }
+    }
 
     entrada.close();
     saida.close();

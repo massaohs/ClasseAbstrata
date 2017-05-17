@@ -25,7 +25,7 @@ private:
     int CalcArredX(float ca, int x, int x0);
 public:
 
-    Reta();///Construtor
+    Reta(int x0, int y0, int x1, int y1);///Construtor
     ///Este método serve para recuperar um ponto x da reta
     int getXPonto0();
     ///Este método serve para recuperar um ponto y da reta
