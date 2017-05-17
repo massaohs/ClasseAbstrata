@@ -1,6 +1,7 @@
 #include "circulo.h"
 #include <cmath>
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 
 

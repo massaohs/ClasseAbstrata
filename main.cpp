@@ -2,6 +2,7 @@
 #include <vector>
 #include <fstream>
 #include <string>
+#include <cstdlib>
 
 #include "screen.h"
 #include "reta.h"
@@ -39,13 +40,6 @@ int main()
     Circulo c2(11, 14, 3, 1);
     aux.setBrush('0');
     c2.draw(aux);*/
-
-
-
-
-
-
-
 
 
     aux.print();
