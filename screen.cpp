@@ -6,7 +6,7 @@ using namespace std;
 Screen::Screen(int nl, int nc){
     nlin = nl;
     ncol = nc;
-    mat = vector<vector<char>>(nlin, vector<char>(ncol, ' '));
+    mat = vector<vector<char> >(nlin, vector<char>(ncol, ' '));
 }
 
 void Screen::setPixel(int x, int y){
