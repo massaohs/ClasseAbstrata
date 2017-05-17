@@ -19,30 +19,41 @@ int main()
     if(!entrada.is_open()){
         exit(-3);
     }
-    Screen aux(20,20);
 
 
 
-    /*aux.setBrush('x');
-    Reta r;
-    r.setPontos(0,2, 3, 10);
-    r.draw(aux);
+    vector <FiguraGeometrica*> figuras;
 
-    Retangulo ret(2, 12, 3, 5);
-    aux.setBrush('@');
-    ret.draw(aux);
+    string str;
+    int largura, altura;
+    char brush;
+    int lx0,ly0, lx1, ly1;
+    int rx0, ry0, rlarg,  ralt;
+    int cx0, cy0, craio, cfillmode;
+    int i = 0;
+    while(entrada >> str){
+        if(str == "dim"){
+            entrada >> largura >> altura;
+            cout << largura << "  " << altura << endl;
+        }
+        else if(str == "brush"){
+            entrada >> brush;
+        }
+        else if(str == "line"){
+            entrada >> lx0 >> ly0 >> lx1 >> ly1;
+            figuras[i] = Reta(lx0, ly0, lx1, ly1);
+        }
+        else if(str == "rectangle"){
+            entrada >> rx0 >> ry0 >> rlarg >> ralt;
+        }
+        else if(str == "circle"){
+            entrada >> cx0 >> cy0 >> craio >> cfillmode;
+        }
+    }
 
 
-    Circulo c(11, 4, 3, 0);
-    aux.setBrush('0');
-    c.draw(aux);
-
-    Circulo c2(11, 14, 3, 1);
-    aux.setBrush('0');
-    c2.draw(aux);*/
 
 
-    aux.print();
 
     ofstream saida;
 
@@ -51,7 +62,6 @@ int main()
         exit(-2);
     }
 
-    saida << aux;
 
 
     entrada.close();
